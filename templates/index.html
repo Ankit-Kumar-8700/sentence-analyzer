@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grammar and Spell Checker</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" href="../static/logo.png" type="image/png">
+</head>
+<body>
+    <h1>Grammar and Spell Checker</h1>
+    <form method="POST" action="/check">
+        <label for="text">Enter text for grammar and spell check:</label>
+        <textarea id="text" name="text" rows="6" required></textarea>
+        <br>
+        <button type="submit">Check</button>
+    </form>
+
+    <div class="uses">
+        <div class="card">Grammar and Spelling Correction</div>
+        <div class="card">Named Entities Recognition</div>
+        <div class="card">Part Of Speech (POS) Analyzation</div>
+        <div class="card">Corrections and Suggestions</div>
+    </div>
+</body>
+</html>

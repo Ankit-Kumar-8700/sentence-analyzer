@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grammar and Spell Checker - Results</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" href="../static/logo.png" type="image/png">
+</head>
+<body>
+    <h1>Grammar and Spell Checker - Results</h1>
+    <h2>Input Text:</h2>
+    <p>{{ text }}</p>
+    <hr>
+    <h2>Output Text:</h2>
+    <p>{{ final_output }}</p>
+
+    <h2>Grammar and Spell Check Results:</h2>
+    <ul>
+        {% if matches|length > 0 %}
+        {% for match in matches %}
+            <li>
+                <strong>Offset :</strong> {{ match.offset }}<br>
+                <strong>Length :</strong> {{ match.errorLength }}<br> 
+                <strong>Rule ID :</strong> {{ match.ruleId }}<br><strong>
+                {{ match.message }}</strong><br>
+                <strong>Suggestion:</strong> {{ match.replacements }}
+            </li>
+        {% endfor %}
+        {% else %}
+            <strong>No Mistakes Found</strong>
+        {% endif %}
+    </ul>
+    <hr>
+    <h2>Analyzation:</h2>
+
+    <h3>Tokens:</h3>
+    <ul class="tokens">
+        {% if tokens|length > 0 %}
+        {% for token in tokens %}
+            <li>
+                {{ token }}
+            </li>
+        {% endfor %}
+        {% else %}
+            <strong>No Tokens Found</strong>
+        {% endif %}
+    </ul>
+    <h3>Named Entities Found:</h3>
+    <ul>
+        {% if ner|length > 0 %}
+        {% for token in ner %}
+            <li>
+                <strong>Token :</strong> {{ token[0] }} , <strong>Label :</strong> {{ token[1] }} , <strong>Description :</strong> {{ token[2] }}
+            </li>
+        {% endfor %}
+        {% else %}
+            <strong>No NERs Found</strong>
+        {% endif %}
+    </ul>
+    <h3>Part Of Speech (POS):</h3>
+    <ul>
+        {% if pos|length > 0 %}
+        {% for token in pos %}
+            <li>
+                <strong>Word :</strong> {{ token[0] }} , <strong>POS :</strong> {{ token[1] }} , <strong>Description :</strong> {{ token[2] }}
+            </li>
+        {% endfor %}
+        {% else %}
+            <strong>No POS Found</strong>
+        {% endif %}
+    </ul>
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
